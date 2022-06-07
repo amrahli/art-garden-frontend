@@ -19,7 +19,7 @@ const Banner: React.FC = () => {
     return(
           <div className="banner" style={{backgroundImage:"url("+url+")"}}>
               <div className="layer">
-                    <p className="slogan">Show your talent1!</p>
+                    <p className="slogan">Show your talent!</p>
                     <div className="button-box">
                         <button className='button button-default'>JOIN US</button>
                     </div>
