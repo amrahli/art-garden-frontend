@@ -1,12 +1,32 @@
 import React from 'react'
-import DateDisplay from '../components/DateDisplay'
+import {useState,useEffect} from 'react'
+import Header from '../components/Header'
+import Banner from '../components/Banner'
+import About from '../components/About'
+import Services from '../components/Services'
+import Projects from '../components/Projects'
+import Events from '../components/Events'
+import Footer from '../components/Footer'
+import axios from 'axios'
+import qs from 'qs'
+import ModalService from 'components/Modal-Service'
 
 const HomePage: React.FC = () => {
+
+    const [events, setEvents] = useState<any>()
+
+
+
     return (
-        <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-            <h1 style={{ fontSize: '4em' }}>Hello world!</h1>
-            <DateDisplay />
-        </div>
+        <>
+            <Header />
+            <Banner />
+            <About />
+            <Services/>
+            <Projects />
+            <Events />
+            <Footer />
+        </>
     )
 }
 

@@ -1,0 +1,632 @@
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+          text-size-adjust: none;
+}
+
+footer, header, nav, section, main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: "Poppins", sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #111111;
+  background-color: #ffffff;
+  font-size: 14px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+div.button-container {
+  text-align: center;
+}
+
+button, a {
+  border: none;
+  position: relative;
+  display: inherit;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+
+button.button, a.button {
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+button.button.button-default, a.button.button-default {
+  background-color: #69117e;
+  color: white;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+button.button.button-fullwidth, a.button.button-fullwidth {
+  width: 100%;
+  background-color: #69117e;
+  color: white;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.layer.layer-black {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.layer.layer-white {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.input-box {
+  position: relative;
+  padding: 10px;
+}
+
+.input-box label {
+  padding: 9px 0 4px;
+  display: inline-block;
+  text-indent: 5px;
+}
+
+.input-box input {
+  padding: 9px 5px 8px;
+  font-family: "Poppins", sans-serif;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  color: grey;
+  text-indent: 5px;
+}
+
+.button-box {
+  text-align: center;
+  position: relative;
+  padding: 10px;
+}
+
+header {
+  height: 80px;
+  -webkit-box-shadow: 0 0 13px grey;
+          box-shadow: 0 0 13px grey;
+}
+
+header .logo {
+  padding: 5px;
+}
+
+header .logo img {
+  height: 70px;
+  margin-left: 10px;
+}
+
+header .header-menu {
+  position: relative;
+  height: 100%;
+  text-align: center;
+}
+
+header .header-menu ul {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+header .header-menu ul li {
+  height: 100%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 20px;
+}
+
+footer {
+  position: relative;
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  padding: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.banner {
+  position: relative;
+  height: 700px;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner .layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(72, 72, 72, 0.45);
+  z-index: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.banner .layer .slogan {
+  font-size: 45px;
+  text-transform: capitalize;
+  color: white;
+  z-index: 123123;
+  font-weight: 600;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.card .card-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 15px 0 10px 0;
+  text-indent: 20px;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  padding: 40px 40px 50px;
+}
+
+section .section-header {
+  font-size: 25px;
+  text-align: center;
+  padding-bottom: 54px;
+}
+
+section.who-we-are .field {
+  position: relative;
+  text-align: center;
+  height: 200px;
+  width: 200px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  margin: 30px auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+section.who-we-are .field .field-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+}
+
+section.who-we-are .field .field-image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+section.who-we-are .field .field-name {
+  font-size: 20px;
+  position: relative;
+  margin-top: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+section.services .service {
+  position: relative;
+  height: 50px;
+  margin: 30px;
+  float: left;
+}
+
+section.services .service a {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: inherit;
+}
+
+section.services .service a img {
+  position: relative;
+  height: 50px;
+  -webkit-filter: greyscale(1);
+          filter: greyscale(1);
+}
+
+section.services .service a span {
+  display: inline-block;
+  height: 50px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 17px;
+  margin-left: 20px;
+  color: #6c6161;
+}
+
+section.services .service a:hover img {
+  -webkit-filter: greyscale(0);
+          filter: greyscale(0);
+}
+
+section.projects {
+  position: relative;
+}
+
+section.projects .project-container {
+  padding: 25px 10px;
+  width: 100%;
+}
+
+section.projects .project-container .project {
+  position: relative;
+  width: 100%;
+  padding: 26px;
+  border-radius: 13px;
+  -webkit-box-shadow: 0 0 22px lightgrey;
+          box-shadow: 0 0 22px lightgrey;
+}
+
+section.projects .project-container .project .project-image img {
+  width: 100%;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+section.projects .project-container .project .project-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 15px 0 10px 0;
+}
+
+section.projects .project-container .project .project-content {
+  font-size: 13px;
+  font-weight: 300;
+  height: 143px;
+  overflow: hidden;
+  line-height: 1.4;
+  text-indent: 20px;
+  text-align: left;
+  margin: 35px 0;
+}
+
+section.events {
+  position: relative;
+}
+
+section.events .event-container {
+  padding: 25px 10px;
+  width: 100%;
+}
+
+section.events .event-container .event {
+  position: relative;
+  width: 100%;
+  padding: 26px;
+  border-radius: 13px;
+  -webkit-box-shadow: 0 0 22px lightgrey;
+          box-shadow: 0 0 22px lightgrey;
+}
+
+section.events .event-container .event .event-image img {
+  width: 100%;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+section.events .event-container .event .event-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 15px 0 10px 0;
+}
+
+section.events .event-container .event .event-date {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.4;
+  text-indent: 20px;
+  text-align: left;
+  margin: 18px 0;
+}
+
+section.about {
+  margin-top: 20px;
+}
+
+section.about .section-header {
+  font-weight: 500;
+}
+
+section.about article h2 {
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+section.about article p {
+  text-indent: 10px;
+  line-height: 1.7;
+  padding: 15px 10px;
+}
+
+section.about article.join-us {
+  background-color: #2c0236;
+  -webkit-box-shadow: 2px 2px 16px #cbcbcb;
+          box-shadow: 2px 2px 16px #cbcbcb;
+  color: white;
+  font-size: 15px;
+  margin: 40px 0;
+  border-radius: 15.3px;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section.about article.join-us .article-header {
+  padding-left: 60px;
+}
+
+section.about article.join-us p {
+  padding-left: 50px;
+}
+
+section.about article.join-us .button-container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+article {
+  position: relative;
+}
+
+article .article-banner .banner-image {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+  width: 100%;
+}
+
+article .article-banner .banner-image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+article .article-header h1 {
+  font-size: 28px;
+  font-weight: 500;
+  padding: 48px 8px 10px;
+}
+
+article .article-description p {
+  font-size: 15px;
+  line-height: 1.8;
+  text-indent: 10px;
+  padding: 12px 0;
+}
+
+article .article-description blockquote {
+  border-left: 4px solid lightgrey;
+  padding-left: 31px;
+  font-style: italic;
+}
+
+article .article-description ul {
+  padding-left: 15px;
+}
+
+article .article-description ul li {
+  margin: 10px 0;
+  list-style: disc;
+}
+
+article .article-form .form-header {
+  font-size: 22px;
+  text-align: center;
+  padding: 30px 0 10px 0;
+}
+
+article .article-form form {
+  max-width: 500px;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.modal {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  display: none;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal.hide {
+  display: none;
+}
+
+.modal .close-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 48px;
+  font-weight: 100;
+  padding: 20px;
+  line-height: 0.6;
+  cursor: pointer;
+}
+
+.modal .modal-body {
+  position: relative;
+  width: 80%;
+  height: auto;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 44px #484848;
+          box-shadow: 0 0 44px #484848;
+  min-height: 400px;
+  background-color: white;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.modal .modal-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 20px 0 15px;
+}
+/*# sourceMappingURL=main.css.map */
