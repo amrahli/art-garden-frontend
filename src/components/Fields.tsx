@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect} from 'react'
 import qs from 'qs'
 import axios from 'axios'
+import { baseUrl } from 'resources/api-constants'
 
 /*
 const fields = [
@@ -10,7 +11,7 @@ const fields = [
     { id: 3, name: 'Xoyski Cafe', image: '/images/fields/3.jpg', description: '', menu: '', gallery: ['', '', '', ''], events: ['', '', ''] }
 ]*/
 
-const backendUrl = 'http://localhost:1337'
+
 
 const Fields: React.FC = () => {
     const [fields, setFields] = useState([])
@@ -34,7 +35,7 @@ const Fields: React.FC = () => {
 
     useEffect(() => {
         async function fetchProjects() {
-            const data = await axios.get(`http://localhost:1337/api/service-fields?${FieldsQuery}`)
+            const data = await axios.get(`${baseUrl}/api/service-fields?${FieldsQuery}`)
             setFields(data?.data.data)
             console.log(data.data.data[0].attributes.Images.data[0].attributes.name)
             console.log(data.data.data)
@@ -51,7 +52,7 @@ const Fields: React.FC = () => {
                     <a href={"/about/"+field.attributes.Slug}>
                         <div className="field">
                             <div className="field-image">
-                                <img src={backendUrl + field.attributes.Images.data[0].attributes.url} alt="" />
+                                <img src={baseUrl + field.attributes.Images.data[0].attributes.url} alt="" />
                             </div>
                             <div className="layer layer-black">
                                 <div className="field-name">{field.attributes.Name}</div>

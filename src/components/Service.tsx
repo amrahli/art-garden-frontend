@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import ModalService from "../components/Modal-Service";
+import { baseUrl } from 'resources/api-constants'
 
 interface Service {
   name: string;

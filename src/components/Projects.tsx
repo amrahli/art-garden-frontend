@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import qs from 'qs'
 import axios from 'axios'
 import Project from './Project'
+import { baseUrl } from 'resources/api-constants'
 
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<any>([])
@@ -31,7 +32,7 @@ const Projects: React.FC = () => {
 
     useEffect(() => {
         async function fetchProjects() {
-            const data = await axios.get(`http://localhost:1337/api/projects?${ProjectsQuery}`)
+            const data = await axios.get(`baseUrl/api/projects?${ProjectsQuery}`)
             setProjects(data?.data.data)
             console.log(data?.data.data)
         }

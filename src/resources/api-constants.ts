@@ -1,4 +1,4 @@
-export const baseUrl = 'http://localhost:1337'
+export const baseUrl = 'https://art-garden-ganja.herokuapp.com/'
 
 
 export const getData = (userId: number): string => {

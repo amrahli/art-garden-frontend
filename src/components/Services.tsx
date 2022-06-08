@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import Service from './Service'
 import ModalService from 'components/Modal-Service'
+import { baseUrl } from 'resources/api-constants'
 
 
 const ServicesAPI = [

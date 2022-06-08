@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import qs from 'qs'
 import axios from 'axios'
 import Event from './Event'
+import { baseUrl } from 'resources/api-constants'
 
 const Events: React.FC = () => {
 
@@ -30,7 +31,7 @@ const Events: React.FC = () => {
 
     useEffect(() => {
         async function fetchProjects() {
-            const data = await axios.get(`http://localhost:1337/api/events?${EventsQuery}`)
+            const data = await axios.get(`baseUrl/api/events?${EventsQuery}`)
             setEvents(data?.data.data)
             console.log(data?.data.data)
         }
