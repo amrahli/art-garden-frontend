@@ -49,7 +49,7 @@ const Projects: React.FC = () => {
                         <Project
                             name={project.attributes.Title}
                             slug={project.attributes.Slug}
-                            image={"http://localhost:1337" + project.attributes.Image?.data[0].attributes.url}
+                            image={baseUrl + project.attributes.Image?.data[0].attributes.url}
                             description={project.attributes.Description}
                         />
                     </div>

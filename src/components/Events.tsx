@@ -31,7 +31,7 @@ const Events: React.FC = () => {
 
     useEffect(() => {
         async function fetchProjects() {
-            const data = await axios.get(`baseUrl/api/events?${EventsQuery}`)
+            const data = await axios.get(`${baseUrl}/api/events?${EventsQuery}`)
             setEvents(data?.data.data)
             console.log(data?.data.data)
         }
@@ -49,7 +49,7 @@ const Events: React.FC = () => {
                             Name={event.attributes.Title}
                             Slug={event.attributes.Slug}
                             Date={event.attributes.Date}
-                            CoverImage={event.attributes.CoverImage? ("http://localhost:1337" + event.attributes.CoverImage?.data.attributes.url):("http://localhost:1337/uploads/image_placeholder_07279df127.png")}
+                            CoverImage={event.attributes.CoverImage? (baseUrl + event.attributes.CoverImage?.data.attributes.url):("http://localhost:1337/uploads/image_placeholder_07279df127.png")}
                             Description={event.attributes.Description}
                         />
                     </div>
