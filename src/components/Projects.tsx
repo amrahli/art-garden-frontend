@@ -32,7 +32,7 @@ const Projects: React.FC = () => {
 
     useEffect(() => {
         async function fetchProjects() {
-            const data = await axios.get(`baseUrl/api/projects?${ProjectsQuery}`)
+            const data = await axios.get(`${baseUrl}/api/projects?${ProjectsQuery}`)
             setProjects(data?.data.data)
             console.log(data?.data.data)
         }
