@@ -45,7 +45,7 @@ const Projects: React.FC = () => {
             <div className="row">
                 <div></div>
                 {projects.map((project: any, i: number) => (
-                    <div className="col-12 col-sm-6" key={i}>
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3" key={i}>
                         <Project
                             name={project.attributes.Title}
                             slug={project.attributes.Slug}

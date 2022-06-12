@@ -31,6 +31,10 @@ const ProjectPage: React.FC = () => {
         }
         fetchProjects()
     }, [])
+    const test=()=>{
+        alert("salam")
+
+    }
     const bannerImageSrc = project?.attributes?.Image? baseUrl + project?.attributes?.Image?.data[0]?.attributes?.url : "http://localhost:1337/uploads/image_placeholder_07279df127.png"
     return (
         <>
@@ -56,12 +60,12 @@ const ProjectPage: React.FC = () => {
                                 return (
                                     <div key={index} className="input-box">
                                         <label htmlFor="">{control.attributes?.Label}</label>
-                                        <input type={control.attributes?.Type} placeholder={control.attributes?.Placeholder} />
+                                        <input type={control.attributes?.Type} placeholder={control.attributes?.Placeholder} id={"input="+ control.attributes?.Label}/>
                                     </div>
                                 )
                             })}
                             <div className="button-box">
-                                <button id="submit" className="button button-default">
+                                <button id="submit" type="button" className="button button-default" onClick={test}>
                                     Apply
                                 </button>
                             </div>

@@ -1,28 +1,58 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Service from './Service'
 import ModalService from 'components/Modal-Service'
 import { baseUrl } from 'resources/api-constants'
+import qs from 'qs'
+import axios from 'axios'
 
-
-const ServicesAPI = [
-    { name: 'Art studio', slug:'', icon: '/images/icons/paint.png' },
-    { name: 'Library', slug:'', icon: '/images/icons/idea.png' },
-    { name: 'Tours', slug:'', icon: '/images/icons/compass.png' },
-    { name: 'Mountaineering', slug:'', icon: '/images/icons/keyboard.png' },
-    { name: 'Exhibitions', slug:'', icon: '/images/icons/lamp.png' },
-    { name: 'Masterclasses', slug:'', icon: '/images/icons/guides.png' },
-    { name: 'Event hall', slug:'', icon: '/images/icons/guides.png' }
-]
 
 const Services: React.FC = () => {
-    const [val,setVal] = useState("salam")
+
+    const [services, setServices] = useState<any>([])
+
+    const ServicesQuery = qs.stringify(
+        {
+            sort: ['Name'],
+            filters: {
+                Active: {
+                    $eq: true
+                }
+            },
+            populate: '*',
+            fields: ['Name', 'Description', 'Slug'],
+            pagination: {
+                pageSize: 10,
+                page: 1
+            },
+            publicationState: 'live',
+            locale: ['en']
+        },
+        {
+            encodeValuesOnly: true
+        }
+    )
+
+    useEffect(() => {
+        async function fetchProjects() {
+            const data = await axios.get(`${baseUrl}/api/services?${ServicesQuery}`)
+            setServices(data?.data.data)
+            console.log(data?.data.data)
+        }
+        fetchProjects()
+    }, [])
+
     return (
         <section className="container services">
             <h2 className="section-header">Services</h2>
             <div className="row">
-                {ServicesAPI.map((data) => (
-                    <div key={data.name} className="col-4">
-                        <Service  name={data.name} slug={data.slug} icon={data.icon} />
+            {services.map((service: any, i: number) => (
+                    <div className="col-6 col-sm-4" key={i}>
+                        <Service
+                            Name={service.attributes.Name}
+                            Slug={service.attributes.Slug}
+                            Icon={baseUrl + service.attributes?.Icon?.data?.attributes?.url}
+                            Description={service.attributes.Description}
+                        />
                     </div>
                 ))}
             </div>

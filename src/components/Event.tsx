@@ -14,7 +14,7 @@ const Event: React.FC<Props> = ({ Name, CoverImage, Date,  Slug, Description }) 
       <div className="event-container card">
           <div className="event">
               <div className="event-image">
-                  <img src={CoverImage} alt={Name} />
+                  <img src={ CoverImage ? CoverImage:"https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" } alt={Name} />
               </div>
               <div className="event-name card-title">{Name}</div>
               <div className="button-container">

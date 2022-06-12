@@ -1,5 +1,6 @@
-export const baseUrl = 'https://art-garden-ganja.herokuapp.com'
-
+export const baseUrl =
+'https://art-garden-ganja.herokuapp.com'
+//'http://localhost:1337'
 
 export const getData = (userId: number): string => {
     return baseUrl + '/api/data/' + userId

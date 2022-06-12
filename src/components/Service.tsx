@@ -4,21 +4,21 @@ import ModalService from "../components/Modal-Service";
 import { baseUrl } from 'resources/api-constants'
 
 interface Service {
-  name: string;
-  icon: string;
-  slug?: string;
-  description?: string;
+  Name: string;
+  Icon: string;
+  Slug?: string;
+  Description?: string;
 }
 
 
 
-const Service: React.FC<Service> = ({name,icon,slug,description}) => {
+const Service: React.FC<Service> = ({Name,Icon,Slug,Description}) => {
 
     return (
         <div className="service">
             <a href="" >
-                <img src={icon} alt="" />
-                <span>{name}</span>
+                <img src={Icon} alt="" />
+                <span>{Name}</span>
 
             </a>
         </div>

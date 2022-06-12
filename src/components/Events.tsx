@@ -49,7 +49,7 @@ const Events: React.FC = () => {
                             Name={event.attributes.Title}
                             Slug={event.attributes.Slug}
                             Date={event.attributes.Date}
-                            CoverImage={event.attributes.CoverImage? (baseUrl + event.attributes.CoverImage?.data.attributes.url):("http://localhost:1337/uploads/image_placeholder_07279df127.png")}
+                            CoverImage={event.attributes.CoverImage? (baseUrl + event.attributes.CoverImage?.data.attributes.url):(`https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png`)}
                             Description={event.attributes.Description}
                         />
                     </div>
