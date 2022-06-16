@@ -5,6 +5,7 @@ import axios from 'axios'
 import Event from '../components/Event'
 import Footer from 'components/Footer'
 import Header from 'components/Header'
+import { baseUrl } from 'resources/api-constants'
 
 
 const EventsPage: React.FC = () => {
@@ -19,7 +20,7 @@ const EventsPage: React.FC = () => {
                 // }
             },
             populate: '*',
-            fields: ['Title', 'Description', 'Slug','Date'],
+            fields: ['Title', 'Description', 'Slug', 'Date'],
             pagination: {
                 pageSize: 10,
                 page: 1
@@ -34,7 +35,7 @@ const EventsPage: React.FC = () => {
 
     useEffect(() => {
         async function fetchEvents() {
-            const data = await axios.get(`http://localhost:1337/api/events?${EventsQuery}`)
+            const data = await axios.get(`${baseUrl}/api/events?${EventsQuery}`)
             setEvents(data?.data.data)
             console.log(data?.data.data)
         }
@@ -45,7 +46,7 @@ const EventsPage: React.FC = () => {
       <>
       <Header />
       <section className="container projects">
-            <h2 className="section-header">Projects</h2>
+            <h2 className="section-header">Events</h2>
             <div className="row">
                 <div></div>
                 {events.map((event: any, i: number) => (
@@ -53,7 +54,7 @@ const EventsPage: React.FC = () => {
                         <Event
                             Name={event.attributes.Title}
                             Slug={event.attributes.Slug}
-                            CoverImage={"http://localhost:1337" + event.attributes.CoverImage?.data.attributes.url}
+                            CoverImage={event.attributes.CoverImage?.data.attributes.url}
                             Description={event.attributes.Description}
                             Date={event.attributes.Date}
                         />

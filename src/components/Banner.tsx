@@ -1,15 +1,23 @@
 import React,{useState,useEffect} from "react"
 import qs from 'qs'
 import axios from 'axios'
-
+import { baseUrl, getServiceFields,getProjects } from 'resources/api-constants'
 
 const url = "/images/art-is-everywhere.jpg";
 
 const Banner: React.FC = () => {
-    const [banner,setBanner] = useState(null)
+
+
+    const [banner,setBanner] = useState<any>()
+
+    const query = qs.stringify({
+        populate: '*',
+        fields: '*'
+    })
+
     useEffect(() => {
         async function fetchEvents() {
-            const data = await axios.get(`www.google.com`)
+            const data = await axios.get(`${baseUrl}/api/home-page?${query}`)
             setBanner(data?.data.data)
             console.log(data?.data.data)
         }
@@ -17,11 +25,11 @@ const Banner: React.FC = () => {
     }, [])
 
     return(
-          <div className="banner" style={{backgroundImage:"url("+url+")"}}>
+          <div className="banner" style={{backgroundImage:"url("+banner?.attributes?.BannerImage+")"}}>
               <div className="layer">
-                    <p className="slogan">Show your talent!</p>
+                    <p className="slogan">{banner?.attributes?.Slogan}</p>
                     <div className="button-box">
-                        <button className='button button-default'>JOIN US</button>
+                        <a id="banner-button" href={banner?.attributes?.ButtonUrl} className='button button-default'>{banner?.attributes?.ButtonText}</a>
                     </div>
               </div>
                 <div>

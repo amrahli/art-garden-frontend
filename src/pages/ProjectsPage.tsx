@@ -5,6 +5,7 @@ import axios from 'axios'
 import Project from '../components/Project'
 import Footer from 'components/Footer'
 import Header from 'components/Header'
+import { baseUrl } from 'resources/api-constants'
 
 
 const ProjectsPage: React.FC = () => {
@@ -34,7 +35,7 @@ const ProjectsPage: React.FC = () => {
 
     useEffect(() => {
         async function fetchProjects() {
-            const data = await axios.get(`http://localhost:1337/api/projects?${ProjectsQuery}`)
+            const data = await axios.get(`${baseUrl}/api/projects?${ProjectsQuery}`)
             setProjects(data?.data.data)
             console.log(data?.data.data)
         }
@@ -53,7 +54,7 @@ const ProjectsPage: React.FC = () => {
                         <Project
                             name={project.attributes.Title}
                             slug={project.attributes.Slug}
-                            image={"http://localhost:1337" + project.attributes.Image.data[0].attributes.url}
+                            image={project.attributes.Image.data[0].attributes.url}
                             description={project.attributes.Description}
                         />
                     </div>

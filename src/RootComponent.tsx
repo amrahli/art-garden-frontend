@@ -6,6 +6,7 @@ import ProjectsPage from './pages/ProjectsPage'
 import ProjectPage from './pages/ProjectPage'
 import ServicesPage from './pages/ServicesPage'
 import EventPage from './pages/EventPage'
+import EventsPage from './pages/EventsPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { ROUTES } from './resources/routes-constants'
 import ServiceFieldPage from 'pages/ServiceFieldPage'
@@ -21,6 +22,7 @@ const RootComponent: React.FC = () => {
                 <Route path={ROUTES.Services} element={<ServicesPage />} />
                 <Route path={ROUTES.Projects} element={<ProjectsPage />} />
                 <Route path={ROUTES.Project} element={<ProjectPage />} />
+                <Route path={ROUTES.Events} element={<EventsPage />} />
                 <Route path={ROUTES.Event} element={<EventPage />} />
             </Routes>
         </Router>

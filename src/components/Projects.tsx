@@ -45,11 +45,11 @@ const Projects: React.FC = () => {
             <div className="row">
                 <div></div>
                 {projects.map((project: any, i: number) => (
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3" key={i}>
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" key={i}>
                         <Project
                             name={project.attributes.Title}
                             slug={project.attributes.Slug}
-                            image={baseUrl + project.attributes.Image?.data[0].attributes.url}
+                            image={project.attributes.Image?.data[0].attributes.url}
                             description={project.attributes.Description}
                         />
                     </div>

@@ -50,7 +50,7 @@ const Services: React.FC = () => {
                         <Service
                             Name={service.attributes.Name}
                             Slug={service.attributes.Slug}
-                            Icon={baseUrl + service.attributes?.Icon?.data?.attributes?.url}
+                            Icon={service.attributes?.Icon?.data?.attributes?.url}
                             Description={service.attributes.Description}
                         />
                     </div>

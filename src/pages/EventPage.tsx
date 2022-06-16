@@ -30,7 +30,7 @@ const EventPage: React.FC = () => {
         fetchProjects()
     }, [])
 
-    const CoverImageSrc = event?.attributes?.CoverImage? baseUrl + event?.attributes?.CoverImage?.data?.attributes?.url : "http://localhost:1337/uploads/image_placeholder_07279df127.png"
+    const CoverImageSrc = event?.attributes?.CoverImage? event?.attributes?.CoverImage?.data?.attributes?.url : "http://localhost:1337/uploads/image_placeholder_07279df127.png"
 
     return (
         <>
