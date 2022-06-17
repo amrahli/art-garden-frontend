@@ -4,6 +4,10 @@ import qs from 'qs'
 import axios from 'axios'
 import Project from './Project'
 import { baseUrl } from 'resources/api-constants'
+import getContent from 'resources/translations'
+
+
+const translations = getContent("projects","az")
 
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<any>([])
@@ -41,7 +45,7 @@ const Projects: React.FC = () => {
 
     return (
         <section className="container projects">
-            <h2 className="section-header">Projects</h2>
+            <h2 className="section-header">{translations.projects}</h2>
             <div className="row">
                 <div></div>
                 {projects.map((project: any, i: number) => (

@@ -4,7 +4,9 @@ import ModalService from 'components/Modal-Service'
 import { baseUrl } from 'resources/api-constants'
 import qs from 'qs'
 import axios from 'axios'
+import getContent from 'resources/translations'
 
+const translations = getContent("services","az")
 
 const Services: React.FC = () => {
 
@@ -43,7 +45,7 @@ const Services: React.FC = () => {
 
     return (
         <section className="container services">
-            <h2 className="section-header">Services</h2>
+            <h2 className="section-header">{translations.services}</h2>
             <div className="row">
             {services.map((service: any, i: number) => (
                     <div className="col-12 col-sm-6" key={i}>

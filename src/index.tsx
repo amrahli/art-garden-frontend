@@ -6,9 +6,7 @@ import 'bootstrap/dist/css/bootstrap-grid.css'
 
 const root = createRoot(document.getElementById('root')!) // createRoot(container!) if you use TypeScript
 root.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
+    <App />
 )
 
 // If you want your app to work offline and load faster, you can change

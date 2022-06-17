@@ -4,6 +4,10 @@ import qs from 'qs'
 import axios from 'axios'
 import Event from './Event'
 import { baseUrl } from 'resources/api-constants'
+import getContent from 'resources/translations'
+
+
+const translations = getContent("events","az")
 
 const Events: React.FC = () => {
 
@@ -41,7 +45,7 @@ const Events: React.FC = () => {
 
   return (
       <section className="container events">
-          <h2 className="section-header">Events</h2>
+          <h2 className="section-header">{translations.events}</h2>
           <div className='row'>
           {events.map((event: any, i: number) => (
                     <div className="col-12 col-sm-6 col-md-6 col-lg-4" key={i}>
