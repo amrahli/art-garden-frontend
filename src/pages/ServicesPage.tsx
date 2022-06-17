@@ -9,7 +9,7 @@ const ServicesPage: React.FC = () => {
     return (
         <>
         <Header />
-
+        <Services/>
         <Footer />
         </>
 

@@ -2,8 +2,8 @@ import React,{useState,useEffect} from 'react'
 import Footer from '../components/Footer'
 import qs from 'qs'
 import axios from 'axios'
-import Header from '../components/Header'
 import { baseUrl, getServiceFields,getProjects } from 'resources/api-constants'
+import Header from '../components/Header'
 import { BrowserRouter as Router, Route, Link, useParams } from 'react-router-dom'
 
 const EventPage: React.FC = () => {

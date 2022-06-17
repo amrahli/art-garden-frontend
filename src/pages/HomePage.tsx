@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
 
     const [events, setEvents] = useState<any>()
 
-
+    
 
     return (
         <>

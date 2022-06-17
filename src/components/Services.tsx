@@ -46,7 +46,7 @@ const Services: React.FC = () => {
             <h2 className="section-header">Services</h2>
             <div className="row">
             {services.map((service: any, i: number) => (
-                    <div className="col-6 col-sm-4" key={i}>
+                    <div className="col-12 col-sm-6" key={i}>
                         <Service
                             Name={service.attributes.Name}
                             Slug={service.attributes.Slug}

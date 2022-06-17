@@ -52,7 +52,7 @@ const Fields: React.FC = () => {
                     <a href={"/about/"+field.attributes.Slug}>
                         <div className="field">
                             <div className="field-image">
-                                <img src={baseUrl + field.attributes.Images.data[0].attributes.url} alt="" />
+                                <img src={field.attributes.Images.data[0].attributes.url} alt="" />
                             </div>
                             <div className="layer layer-black">
                                 <div className="field-name">{field.attributes.Name}</div>

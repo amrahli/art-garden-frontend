@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import qs from 'qs'
 import axios from 'axios'
-import Event from '../components/Event'
+import Events from '../components/Events'
 import Footer from 'components/Footer'
 import Header from 'components/Header'
 import { baseUrl } from 'resources/api-constants'
@@ -45,23 +45,7 @@ const EventsPage: React.FC = () => {
     return (
       <>
       <Header />
-      <section className="container projects">
-            <h2 className="section-header">Events</h2>
-            <div className="row">
-                <div></div>
-                {events.map((event: any, i: number) => (
-                    <div className="col-12 col-md-6 col-lg-4" key={i}>
-                        <Event
-                            Name={event.attributes.Title}
-                            Slug={event.attributes.Slug}
-                            CoverImage={event.attributes.CoverImage?.data.attributes.url}
-                            Description={event.attributes.Description}
-                            Date={event.attributes.Date}
-                        />
-                    </div>
-                ))}
-            </div>
-        </section>
+      <Events/>
         <Footer/>
       </>
 
