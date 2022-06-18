@@ -1,9 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import getContent from 'resources/translations'
+import ModalService from './Modal-Service'
 
 const translations = getContent("header","az")
 
 const Header: React.FC = () => {
+    const test = (e:any) =>{
+        e.preventDefault();
+        setVisible("show")
+    }
+
+    const [visible,setVisible] = useState("hide")
+
     return (
         <header>
             <div className="row">
@@ -22,12 +30,13 @@ const Header: React.FC = () => {
                             <li><a href="/projects">{translations.menu.projects}</a></li>
                             <li><a href="/events">{translations.menu.events}</a></li>
                             <li>
-                                <a className="button button-default" href="">{translations.menu.joinUs}</a>
+                                <a className="button button-default" href="" onClick={test}>{translations.menu.joinUs} </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <ModalService visible={visible} />
         </header>
     )
 }

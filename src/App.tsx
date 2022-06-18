@@ -8,8 +8,9 @@ import 'styles/bootstrap.min.css'
 import 'styles/main.css'
 import { AnyAction } from 'redux'
 
+
+
 const App: React.FC = () => {
-    
 
     return (
         <Provider store={store}>

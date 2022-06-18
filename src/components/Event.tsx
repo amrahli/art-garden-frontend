@@ -1,4 +1,5 @@
 import React from "react";
+import getContent from 'resources/translations'
 
 interface Props {
   Name: string;
@@ -7,6 +8,8 @@ interface Props {
   Date: Date;
   Description?: string;
 }
+
+const translations = getContent("events","az")
 
 
 const Event: React.FC<Props> = ({ Name, CoverImage, Date,  Slug, Description }) => {
@@ -18,7 +21,7 @@ const Event: React.FC<Props> = ({ Name, CoverImage, Date,  Slug, Description }) 
               </div>
               <div className="event-name card-title">{Name}</div>
               <div className="button-container">
-                  <a className="button button-default" href={"/events/"+Slug}>More</a>
+                  <a className="button button-default" href={"/events/"+Slug}>{translations.more}</a>
               </div>
           </div>
       </div>

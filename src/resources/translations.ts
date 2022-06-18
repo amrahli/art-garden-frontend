@@ -13,7 +13,15 @@ const translations :any = {
                 partnership: 'Tərəfdaşlıq',
                 contact: 'Əlaqə',
                 joinUs:'Bizə qoşul',
-                whoWeAre:'Biz kimik?!'
+                whoWeAre:'Biz kimik?!',
+                fullName: 'Adınız və soyadınız',
+                email: 'E-poçt ünvanı',
+                phoneNumber: "Telefon nömrəsi",
+                yourMessage: "Mesajınız",
+                typeYourName: "Ad və soyadınızı daxil edin",
+                typeYourEmail:"E-poçt ünvanınızı daxil edin",
+                typeYourPhone:"Telefon nömrənizi daxil edin",
+                typeYourMessage:"Mesajınızı yazın",
             },
             services:{
                 services:"Xidmətlər"
@@ -36,6 +44,9 @@ const translations :any = {
                     joinUs:"Bizə qoşul"
                 }
             }
+        },
+        common:{
+            more:"Ətraflı"
         }
     },
     en: {
@@ -55,7 +66,7 @@ const translations :any = {
 const getContent = (component: string, language: string) => {
     //console.log(123)
 
-    return {...translations[language].components[component]}
+    return {...translations[language].components[component],...translations[language].common}
 }
 
 export default getContent

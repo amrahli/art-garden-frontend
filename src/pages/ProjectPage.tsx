@@ -112,6 +112,7 @@ const ProjectPage: React.FC = () => {
                                     </div>
                                 )
                             })}
+                            <div className="g-recaptcha g-recaptcha-custom" data-sitekey="6Letg30gAAAAAL-BOKYZNel1i17QhLWfkIlYnPL0"></div>
                             <div className="button-box">
                                 <button id="submit" type="button" className="button button-default" onClick={test}>
                                     Apply

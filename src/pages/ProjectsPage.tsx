@@ -6,7 +6,10 @@ import Project from '../components/Project'
 import Footer from 'components/Footer'
 import Header from 'components/Header'
 import { baseUrl } from 'resources/api-constants'
+import getContent from 'resources/translations'
 
+const translations = getContent("projects","az")
+console.log(translations)
 
 const ProjectsPage: React.FC = () => {
     const [projects, setProjects] = useState<any>([])
@@ -46,7 +49,7 @@ const ProjectsPage: React.FC = () => {
       <>
       <Header />
       <section className="container projects">
-            <h2 className="section-header">Projects</h2>
+            <h2 className="section-header">{translations.projects}</h2>
             <div className="row">
                 <div></div>
                 {projects.map((project: any, i: number) => (

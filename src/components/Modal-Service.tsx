@@ -1,16 +1,24 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Service from "../components/Service";
 import { persistor, store } from '../store/reducers/store'
 import { Provider } from 'react-redux'
 
 
+interface modalVisibility{
+    visible:string
+}
 
-const ModalService: React.FC = (props) => {
+const ModalService: React.FC<modalVisibility> = ({visible}) => {
+    const changeVisibility = () =>{
 
+    }
+
+
+    //const [visible, setVisible] = useState<string>("")
     return (
-        <div className={"modal service-modal "}>
+        <div className={"modal service-modal " + visible}>
             <div className="modal-body">
-                <span className="close-button" onClick={()=>{console.log("ok")}}>&times;</span>
+                <span className="close-button" onClick={changeVisibility}>&times;</span>
                 <div className="modal-header">
                     <h2>Art Studio</h2>
                 </div>

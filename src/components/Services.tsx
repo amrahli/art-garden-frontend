@@ -58,7 +58,7 @@ const Services: React.FC = () => {
                     </div>
                 ))}
             </div>
-            <ModalService />
+            <ModalService visible="hide"/>
         </section>
     )
 }

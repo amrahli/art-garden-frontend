@@ -145,12 +145,12 @@ p {
 }
 
 .input-box label {
-  padding: 9px 0 4px;
+  padding: 1px 0 12px;
   display: inline-block;
   text-indent: 5px;
 }
 
-.input-box input {
+.input-box input, .input-box textarea {
   padding: 9px 5px 8px;
   font-family: "Poppins", sans-serif;
   border: 1px solid lightgrey;
@@ -162,10 +162,23 @@ p {
   text-indent: 5px;
 }
 
+.input-box textarea {
+  height: 100px;
+}
+
 .button-box {
   text-align: center;
   position: relative;
   padding: 10px;
+}
+
+.g-recaptcha-custom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 header {
@@ -475,9 +488,10 @@ section.about .section-header {
 }
 
 section.about article h2 {
-  padding: 10px 20px;
+  padding: 20px 20px 30px;
   font-size: 18px;
   font-weight: 500;
+  text-align: center;
 }
 
 section.about article p {
@@ -494,7 +508,7 @@ section.about article.join-us {
   font-size: 15px;
   margin: 40px 0;
   border-radius: 15.3px;
-  height: 200px;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -505,6 +519,11 @@ section.about article.join-us {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 30px 20px;
+}
+
+section.about article.join-us form label {
+  color: white;
 }
 
 section.about article.join-us .article-header {
@@ -512,7 +531,8 @@ section.about article.join-us .article-header {
 }
 
 section.about article.join-us p {
-  padding-left: 50px;
+  padding-left: 19px;
+  padding-top: 0;
 }
 
 section.about article.join-us .button-container {
@@ -523,6 +543,7 @@ section.about article.join-us .button-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 16px 0 0;
 }
 
 article {
