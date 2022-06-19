@@ -300,54 +300,42 @@ section .section-header {
   padding-bottom: 54px;
 }
 
+section.who-we-are a {
+  text-decoration: none;
+}
+
 section.who-we-are .field {
   position: relative;
   text-align: center;
-  height: 200px;
-  width: 200px;
+  height: 230px;
+  width: 230px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   color: white;
   margin: 30px auto;
-  border-radius: 50%;
-  overflow: hidden;
 }
 
 section.who-we-are .field .field-image {
-  position: absolute;
-  left: 0;
-  top: 0;
   height: 100%;
   width: 100%;
   text-align: center;
-  display: inline-block;
 }
 
 section.who-we-are .field .field-image img {
   -o-object-fit: cover;
      object-fit: cover;
+  width: 100%;
 }
 
 section.who-we-are .field .field-name {
-  font-size: 20px;
+  font-size: 16px;
   position: relative;
-  margin-top: 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  color: #646464;
+  text-decoration: none;
 }
 
 section.services .service {
@@ -544,6 +532,12 @@ section.about article.join-us .button-container {
       -ms-flex-align: center;
           align-items: center;
   padding: 16px 0 0;
+}
+
+section.service-field-about .section-image {
+  position: relative;
+  margin: 0 auto;
+  display: inherit;
 }
 
 article {

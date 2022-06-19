@@ -7,11 +7,10 @@ import { baseUrl } from 'resources/api-constants'
 import getContent from 'resources/translations'
 
 
-const translations = getContent("projects","az")
 
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<any>([])
-
+    const translations = getContent('projects', 'az')
     const ProjectsQuery = qs.stringify(
         {
             sort: ['id:desc'],
@@ -43,24 +42,29 @@ const Projects: React.FC = () => {
         fetchProjects()
     }, [])
 
-    return (
-        <section className="container projects">
-            <h2 className="section-header">{translations.projects}</h2>
-            <div className="row">
-                <div></div>
-                {projects.map((project: any, i: number) => (
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" key={i}>
-                        <Project
-                            name={project.attributes.Title}
-                            slug={project.attributes.Slug}
-                            image={project.attributes.Image?.data[0].attributes.url}
-                            description={project.attributes.Description}
-                        />
+        if(projects.length>0){
+            return (
+                <section className="container projects">
+                    <h2 className="section-header">{translations.projects}</h2>
+                    <div className="row">
+                        <div></div>
+                        {projects.map((project: any, i: number) => (
+                            <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" key={i}>
+                                <Project
+                                    name={project.attributes.Title}
+                                    slug={project.attributes.Slug}
+                                    image={project.attributes.Image?.data[0].attributes.url}
+                                    description={project.attributes.Description}
+                                />
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-        </section>
-    )
+                </section>
+            )
+        }else{
+            return (<></>)
+        }
+
 }
 
 export default Projects

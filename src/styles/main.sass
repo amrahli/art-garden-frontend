@@ -172,35 +172,29 @@ section
     text-align: center
     padding-bottom: 54px
   &.who-we-are
+    a
+      text-decoration: none
     .field
       position: relative
       text-align: center
-      height: 200px
-      width: 200px
+      height: 230px
+      width: 230px
       justify-content: center
       align-items: center
-      display: flex
       color: white
       margin: 30px auto
-      border-radius: 50%
-      overflow: hidden
       .field-image
-        position: absolute
-        left: 0
-        top: 0
         height: 100%
         width: 100%
         text-align: center
-        display: inline-block
         img
           object-fit: cover
+          width: 100%
       .field-name
-        font-size: 20px
+        font-size: 16px
         position: relative
-        margin-top: 0
-        justify-content: center
-        align-items: center
-        display: inline-flex
+        color: #646464
+        text-decoration: none
   &.services
     .service
       position: relative
@@ -328,6 +322,11 @@ section
           display: flex
           align-items: center
           padding: 16px 0 0
+  &.service-field-about
+    .section-image
+      position: relative
+      margin: 0 auto
+      display: inherit
 article
   position: relative
   .article-banner

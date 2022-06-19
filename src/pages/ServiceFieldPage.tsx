@@ -38,13 +38,13 @@ const ServiceFieldPage: React.FC = () => {
         <>
             <Header />
 
-            <section className="about">
+            <section className="about service-field-about">
                 <h1 className="section-header">{serviceField?.attributes?.Name.toString()}</h1>
+                <img className="section-image" src={serviceField?.attributes?.Images?.data[0].attributes.url} alt="" />
                 <article className="our-story">
-                    <h2>About</h2>
+                    <h2>Haqqımızda</h2>
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam, velit numquam. At blanditiis quibusdam ut, nesciunt sed dicta ipsum
-                        mollitia modi molestias accusantium quidem necessitatibus optio eos! Libero, veritatis similique.
+                    {serviceField?.attributes?.About}
                     </p>
                 </article>
             </section>

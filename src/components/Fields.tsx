@@ -4,13 +4,6 @@ import qs from 'qs'
 import axios from 'axios'
 import { baseUrl } from 'resources/api-constants'
 
-/*
-const fields = [
-    { id: 1, name: 'Art Garden', image: '/images/fields/1.jpg', description: '', menu: '', gallery: ['', '', '', ''], events: ['', '', ''] },
-    { id: 2, name: 'Emalatxana', image: '/images/fields/2.jpg', description: '', menu: '', gallery: ['', '', '', ''], events: ['', '', ''] },
-    { id: 3, name: 'Xoyski Cafe', image: '/images/fields/3.jpg', description: '', menu: '', gallery: ['', '', '', ''], events: ['', '', ''] }
-]*/
-
 
 
 const Fields: React.FC = () => {
@@ -54,10 +47,9 @@ const Fields: React.FC = () => {
                             <div className="field-image">
                                 <img src={field.attributes.Images.data[0].attributes.url} alt="" />
                             </div>
-                            <div className="layer layer-black">
-                                <div className="field-name">{field.attributes.Name}</div>
-                            </div>
+                            <div className="field-name">{field.attributes.Name}</div>
                         </div>
+
                     </a>
                 </div>
             ))}

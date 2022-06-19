@@ -42,25 +42,30 @@ const Events: React.FC = () => {
         fetchProjects()
     }, [])
 
+if(events.length>0){
+    return (
 
-  return (
-      <section className="container events">
-          <h2 className="section-header">{translations.events}</h2>
-          <div className='row'>
-          {events.map((event: any, i: number) => (
-                    <div className="col-12 col-sm-6 col-md-6 col-lg-4" key={i}>
-                        <Event
-                            Name={event.attributes.Title}
-                            Slug={event.attributes.Slug}
-                            Date={event.attributes.Date}
-                            CoverImage={event.attributes.CoverImage? (event.attributes.CoverImage?.data.attributes.url):(`https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png`)}
-                            Description={event.attributes.Description}
-                        />
-                    </div>
-                ))}
-          </div>
-      </section>
-  )
+        <section className="container events" >
+            <h2 className="section-header">{translations.events}</h2>
+            <div className='row'>
+            {events.map((event: any, i: number) => (
+                      <div className="col-12 col-sm-6 col-md-6 col-lg-4" key={i}>
+                          <Event
+                              Name={event.attributes.Title}
+                              Slug={event.attributes.Slug}
+                              Date={event.attributes.Date}
+                              CoverImage={event.attributes.CoverImage? (event.attributes.CoverImage?.data.attributes.url):(`https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png`)}
+                              Description={event.attributes.Description}
+                          />
+                      </div>
+                  ))}
+            </div>
+        </section>
+    )
+}else{
+    return(<></>)
+}
+
 }
 
 export default Events;
