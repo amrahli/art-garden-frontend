@@ -96,7 +96,7 @@ const AboutPage: React.FC = () => {
                                     </div>
                                     <div className="input-box">
                                         <label htmlFor="">{translations.yourMessage}</label>
-                                        <textarea name="Message" placeholder={translations.typeYourMeesage}/>
+                                        <textarea name="Message" placeholder={translations.typeYourMessage}/>
                                     </div>
                                     <div className="g-recaptcha g-recaptcha-custom" data-sitekey="6Letg30gAAAAAL-BOKYZNel1i17QhLWfkIlYnPL0"></div>
                                     <div className="button-container">
