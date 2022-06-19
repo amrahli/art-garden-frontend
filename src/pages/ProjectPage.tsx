@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import qs from 'qs'
 import { baseUrl, getServiceFields, getProjects } from 'resources/api-constants'
+import getContent from 'resources/translations'
 
 interface IDataToSend {
     Name: string
@@ -28,7 +29,7 @@ const ProjectPage: React.FC = () => {
     const [dataToSend, setDataToSend] = React.useState<Array<IDataToSend>>([])
     const [stringToSend, setStringToSend] = React.useState('')
     const [application, setApplication] = React.useState<IApplication>({})
-
+    const translations = getContent('projects', 'az')
     const query = qs.stringify({
         filters: {
             Slug: {
@@ -58,27 +59,35 @@ const ProjectPage: React.FC = () => {
 
                 if (!defaultControls.includes(control.attributes.Name)) {
                     console.log(control.attributes.Name)
-                    z += control.attributes?.Label + ': ' + (document.getElementsByName(control.attributes.Name)[0] as HTMLInputElement).value + '\n'
+                    let value = ''
+                    if (control.attributes.Type === 'textarea') {
+                        value = (document.getElementsByName(control.attributes.Name)[0] as HTMLTextAreaElement).value
+                    } else {
+                        value = (document.getElementsByName(control.attributes.Name)[0] as HTMLInputElement).value
+                    }
+                    z += control.attributes?.Label + ': ' + value + '\n'
                 }
             })
         }
         setStringToSend(z)
 
-        axios.post(`${baseUrl}/api/applicants`, {
-            data: {
-                Extras: z,
-                FullName: (document.getElementsByName('FullName')[0] as HTMLInputElement).value,
-                Email: (document.getElementsByName('Email')[0] as HTMLInputElement).value,
-                Phone: (document.getElementsByName('Phone')[0] as HTMLInputElement).value
-            }
-        }).then(response=>{
-            if(response.statusText=="OK"){
-                alert("Your application is accepted!");
-                (document.querySelector(".project form") as HTMLFormElement).reset()
-            }else{
-                alert("Something went wrong! Try again later!")
-            }
-        })
+        axios
+            .post(`${baseUrl}/api/applicants`, {
+                data: {
+                    Extras: z,
+                    FullName: (document.getElementsByName('FullName')[0] as HTMLInputElement).value,
+                    Email: (document.getElementsByName('Email')[0] as HTMLInputElement).value,
+                    Phone: (document.getElementsByName('Phone')[0] as HTMLInputElement).value
+                }
+            })
+            .then((response) => {
+                if (response.statusText == 'OK') {
+                    alert('Your application is accepted!')
+                    ;(document.querySelector('.project form') as HTMLFormElement).reset()
+                } else {
+                    alert('Something went wrong! Try again later!')
+                }
+            })
     }
     const bannerImageSrc = project?.attributes?.Image
         ? project?.attributes?.Image?.data[0]?.attributes?.url
@@ -101,27 +110,45 @@ const ProjectPage: React.FC = () => {
                         <ReactMarkdown>{project?.attributes?.Description}</ReactMarkdown>
                     </div>
                     <div className="article-form">
-                        <h2 className="form-header">Application Form</h2>
-                        <form action="">
+                        <h2 className="form-header">{translations?.applicationForm}</h2>
+                        <form action="" >
                             <input type="hidden" name="" value={project?.attributes?.Title} />
-                            {project?.attributes?.form_fields?.data?.sort((a:any,b:any) => a.attributes?.Order-b.attributes?.Order).map((control: any, index: number) => {
-                                if(control.attributes?.Type === "textarea"){
-                                    return (
-                                        <div key={index} className="input-box">
-                                            <label htmlFor="">{control.attributes?.Label}</label>
-                                            <textarea name={control.attributes?.Name} placeholder={control.attributes?.Placeholder} />
-                                        </div>
-                                    )
-                                }else{
-                                    return (
-                                        <div key={index} className="input-box">
-                                            <label htmlFor="">{control.attributes?.Label}</label>
-                                            <input name={control.attributes?.Name} type={control.attributes?.Type} placeholder={control.attributes?.Placeholder} />
-                                        </div>
-                                    )
-                                }
+                            <div className="input-box">
+                            <label htmlFor="">Adınız, soyadınız</label>
+                                <input type="text" name="FullName" />
+                            </div>
+                            <div className="input-box">
+                                <label htmlFor="">E-poçt ünvanı</label>
+                                <input type="email" name="Email"/>
+                            </div>
+                            <div className="input-box">
+                            <label htmlFor="">Telefon</label>
+                                <input type="tel" name="Phone" />
+                            </div>
 
-                            })}
+                            {project?.attributes?.form_fields?.data
+                                ?.sort((a: any, b: any) => a.attributes?.Order - b.attributes?.Order)
+                                .map((control: any, index: number) => {
+                                    if (control.attributes?.Type === 'textarea') {
+                                        return (
+                                            <div key={index} className="input-box">
+                                                <label htmlFor="">{control.attributes?.Label}</label>
+                                                <textarea name={control.attributes?.Name} placeholder={control.attributes?.Placeholder} />
+                                            </div>
+                                        )
+                                    } else {
+                                        return (
+                                            <div key={index} className="input-box">
+                                                <label htmlFor="">{control.attributes?.Label}</label>
+                                                <input
+                                                    name={control.attributes?.Name}
+                                                    type={control.attributes?.Type}
+                                                    placeholder={control.attributes?.Placeholder}
+                                                />
+                                            </div>
+                                        )
+                                    }
+                                })}
                             <div className="g-recaptcha g-recaptcha-custom" data-sitekey="6Letg30gAAAAAL-BOKYZNel1i17QhLWfkIlYnPL0"></div>
                             <div className="button-box">
                                 <button id="submit" type="button" className="button button-default" onClick={test}>

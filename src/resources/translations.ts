@@ -27,7 +27,8 @@ const translations :any = {
                 services:"Xidmətlər"
             },
             projects:{
-                projects:"Layihələr"
+                projects:"Layihələr",
+                applicationForm: "Müraciət forması"
             },
             events:{
                 events:"Tədbirlər"
