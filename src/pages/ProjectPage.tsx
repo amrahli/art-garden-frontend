@@ -82,7 +82,7 @@ const ProjectPage: React.FC = () => {
     }
     const bannerImageSrc = project?.attributes?.Image
         ? project?.attributes?.Image?.data[0]?.attributes?.url
-        : 'http://localhost:1337/uploads/image_placeholder_07279df127.png'
+        : 'https://res.cloudinary.com/drxsywfuh/image/upload/v1655655238/medium_default_placeholder_3ee627c596.png'
     return (
         <>
             <Header />
@@ -104,13 +104,23 @@ const ProjectPage: React.FC = () => {
                         <h2 className="form-header">Application Form</h2>
                         <form action="">
                             <input type="hidden" name="" value={project?.attributes?.Title} />
-                            {project?.attributes?.form_fields?.data?.map((control: any, index: number) => {
-                                return (
-                                    <div key={index} className="input-box">
-                                        <label htmlFor="">{control.attributes?.Label}</label>
-                                        <input name={control.attributes?.Name} type={control.attributes?.Type} placeholder={control.attributes?.Placeholder} />
-                                    </div>
-                                )
+                            {project?.attributes?.form_fields?.data?.sort((a:any,b:any) => a.attributes?.Order-b.attributes?.Order).map((control: any, index: number) => {
+                                if(control.attributes?.Type === "textarea"){
+                                    return (
+                                        <div key={index} className="input-box">
+                                            <label htmlFor="">{control.attributes?.Label}</label>
+                                            <textarea name={control.attributes?.Name} placeholder={control.attributes?.Placeholder} />
+                                        </div>
+                                    )
+                                }else{
+                                    return (
+                                        <div key={index} className="input-box">
+                                            <label htmlFor="">{control.attributes?.Label}</label>
+                                            <input name={control.attributes?.Name} type={control.attributes?.Type} placeholder={control.attributes?.Placeholder} />
+                                        </div>
+                                    )
+                                }
+
                             })}
                             <div className="g-recaptcha g-recaptcha-custom" data-sitekey="6Letg30gAAAAAL-BOKYZNel1i17QhLWfkIlYnPL0"></div>
                             <div className="button-box">

@@ -42,6 +42,8 @@ const Projects: React.FC = () => {
         fetchProjects()
     }, [])
 
+
+
         if(projects.length>0){
             return (
                 <section className="container projects">
@@ -53,7 +55,7 @@ const Projects: React.FC = () => {
                                 <Project
                                     name={project.attributes.Title}
                                     slug={project.attributes.Slug}
-                                    image={project.attributes.Image?.data[0].attributes.url}
+                                    image={project.attributes?.Image !== undefined? project.attributes?.Image?.data[0]?.attributes?.url: 'https://res.cloudinary.com/drxsywfuh/image/upload/v1655655238/medium_default_placeholder_3ee627c596.png'}
                                     description={project.attributes.Description}
                                 />
                             </div>
