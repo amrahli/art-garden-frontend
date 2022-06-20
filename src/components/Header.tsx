@@ -12,10 +12,16 @@ const Header: React.FC = () => {
 
 
     window.addEventListener("resize",(e)=>{
-        const _window = window
         if(window.innerWidth > 576){
             const header = document.getElementById('header')
             header?.classList?.remove("open")
+        }
+    })
+
+    document.addEventListener("DOMContentLoaded",()=>{
+        if(window.innerWidth <= 576){
+            const header = document.getElementById('header')
+            header?.classList?.add("open")
         }
     })
 
