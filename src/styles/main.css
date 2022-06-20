@@ -192,6 +192,7 @@ header#header {
   height: 80px;
   -webkit-box-shadow: 0 0 13px grey;
           box-shadow: 0 0 13px grey;
+  overflow: hidden;
 }
 
 header#header .hamburger {
@@ -203,6 +204,10 @@ header#header .hamburger {
   position: absolute;
   top: 24px;
   right: 13px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 header#header .hamburger span {

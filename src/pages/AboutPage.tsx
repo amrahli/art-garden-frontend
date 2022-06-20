@@ -6,13 +6,13 @@ import axios from 'axios'
 import { baseUrl, getServiceFields, getProjects } from 'resources/api-constants'
 import getContent from 'resources/translations'
 
-const translations = getContent('about', 'az')
+
 
 
 const AboutPage: React.FC = () => {
     const [aboutContent, setAboutContent] = useState<any>()
     //const [translations,setTranslations] = useState<any>()
-
+    const translations = getContent('about', 'az')
     const [joinUsValues,setJoinUsValues] = useState<IFormInputs>()
 
     const query = qs.stringify({
@@ -52,9 +52,6 @@ const AboutPage: React.FC = () => {
     }
 
     useEffect(() => {
-        //const translations = getContent("test1","test2")
-
-        console.log(translations)
         async function fetchProjects() {
             const data = await axios.get(`${baseUrl}/api/about-page?${query}`)
             setAboutContent(data?.data.data.attributes)
@@ -66,7 +63,6 @@ const AboutPage: React.FC = () => {
     return (
         <>
             <Header />
-
             <section className="about">
                 <h1 className="section-header">{translations?.aboutUs}</h1>
                 <article className="our-story">
@@ -76,10 +72,10 @@ const AboutPage: React.FC = () => {
                 <article className="join-us">
                     <h2 text-align="center">{translations?.joinUs}</h2>
                     <div className="row">
-                        <div className="col-5">
+                        <div className="col-12 col-md-5">
                             <p className="join-us-banner-content">{aboutContent?.Banner_Content}</p>
                         </div>
-                        <div className="col-7">
+                        <div className="col-12 col-md-7">
                             <div className="join-us-form">
                                 <form action="">
                                     <div className="input-box">
