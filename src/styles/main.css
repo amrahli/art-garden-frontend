@@ -145,9 +145,12 @@ p {
 }
 
 .input-box label {
-  padding: 1px 0 12px;
+  padding: 10px 2px 2px;
   display: inline-block;
   text-indent: 5px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #3c3c3c;
 }
 
 .input-box input, .input-box textarea {
@@ -160,6 +163,10 @@ p {
   font-size: 14px;
   color: grey;
   text-indent: 5px;
+}
+
+.input-box input.error, .input-box textarea.error {
+  border: 1px solid #ff7171;
 }
 
 .input-box textarea {

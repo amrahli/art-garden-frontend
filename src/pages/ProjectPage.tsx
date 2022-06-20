@@ -30,6 +30,7 @@ const ProjectPage: React.FC = () => {
     const [stringToSend, setStringToSend] = React.useState('')
     const [application, setApplication] = React.useState<IApplication>({})
     const translations = getContent('projects', 'az')
+
     const query = qs.stringify({
         filters: {
             Slug: {
@@ -47,47 +48,68 @@ const ProjectPage: React.FC = () => {
             console.log(data?.data.data[0])
         }
         fetchProjects()
+        validateForm()
     }, [])
 
     let z = ''
 
-    const test = () => {
-        {
-            project?.attributes?.form_fields?.data?.forEach((control: any, index: number) => {
-                const inputValue = (document.getElementsByName(control.attributes.Name)[0] as HTMLInputElement).value
-                const defaultControls = ['FullName', 'Email', 'Phone']
+    const validateForm = () => {
+        const inputElements = document.forms[0].elements
+        console.log(inputElements.length)
 
-                if (!defaultControls.includes(control.attributes.Name)) {
-                    console.log(control.attributes.Name)
-                    let value = ''
-                    if (control.attributes.Type === 'textarea') {
-                        value = (document.getElementsByName(control.attributes.Name)[0] as HTMLTextAreaElement).value
-                    } else {
-                        value = (document.getElementsByName(control.attributes.Name)[0] as HTMLInputElement).value
-                    }
-                    z += control.attributes?.Label + ': ' + value + '\n'
-                }
-            })
+        for (let i = 0; i < inputElements.length; i++) {
+            console.log((inputElements[i] as HTMLFormElement).value)
+            console.log((inputElements[i] as HTMLFormElement).name)
+            if ((inputElements[i] as HTMLFormElement).value === '') {
+                (inputElements[i] as HTMLFormElement).classList.add('error')
+            }else{
+                (inputElements[i] as HTMLFormElement).classList.remove('error')
+            }
         }
-        setStringToSend(z)
+        return false
+    }
 
-        axios
-            .post(`${baseUrl}/api/applicants`, {
-                data: {
-                    Extras: z,
-                    FullName: (document.getElementsByName('FullName')[0] as HTMLInputElement).value,
-                    Email: (document.getElementsByName('Email')[0] as HTMLInputElement).value,
-                    Phone: (document.getElementsByName('Phone')[0] as HTMLInputElement).value
-                }
-            })
-            .then((response) => {
-                if (response.statusText == 'OK') {
-                    alert('Your application is accepted!')
-                    ;(document.querySelector('.project form') as HTMLFormElement).reset()
+    const removeError = () => {
+        const inputElements = document.forms[0].elements
+
+        for (let i = 0; i < inputElements.length; i++) {
+
+                (inputElements[i] as HTMLFormElement).classList.remove('error')
+        }
+        return false
+    }
+
+    const test = () => {
+        if (validateForm()) {
+            project?.attributes?.form_fields?.data?.forEach((control: any, index: number) => {
+                console.log(control.attributes.Name)
+                let value = ''
+                if (control.attributes.Type === 'textarea') {
+                    value = (document.getElementsByName(control.attributes.Name)[0] as HTMLTextAreaElement).value
                 } else {
-                    alert('Something went wrong! Try again later!')
+                    value = (document.getElementsByName(control.attributes.Name)[0] as HTMLInputElement).value
                 }
+                z += control.attributes?.Label + ': ' + value + '\n'
             })
+            setStringToSend(z)
+
+            axios
+                .post(`${baseUrl}/api/applicants`, {
+                    data: {
+                        Extras: z
+                    }
+                })
+                .then((response) => {
+                    if (response.statusText == 'OK') {
+                        alert('Müraciətiniz qəbul edildi!')
+                        ;(document.querySelector('.project form') as HTMLFormElement).reset()
+                    } else {
+                        alert('Bir az sonra yenidən cəhd edin')
+                    }
+                })
+        }else{
+            alert("Doldurulmamış xanalar mövcuddur")
+        }
     }
     const bannerImageSrc = project?.attributes?.Image
         ? project?.attributes?.Image?.data[0]?.attributes?.url
@@ -111,21 +133,8 @@ const ProjectPage: React.FC = () => {
                     </div>
                     <div className="article-form">
                         <h2 className="form-header">{translations?.applicationForm}</h2>
-                        <form action="" >
+                        <form action="">
                             <input type="hidden" name="" value={project?.attributes?.Title} />
-                            <div className="input-box">
-                            <label htmlFor="">Adınız, soyadınız</label>
-                                <input type="text" name="FullName" />
-                            </div>
-                            <div className="input-box">
-                                <label htmlFor="">E-poçt ünvanı</label>
-                                <input type="email" name="Email"/>
-                            </div>
-                            <div className="input-box">
-                            <label htmlFor="">Telefon</label>
-                                <input type="tel" name="Phone" />
-                            </div>
-
                             {project?.attributes?.form_fields?.data
                                 ?.sort((a: any, b: any) => a.attributes?.Order - b.attributes?.Order)
                                 .map((control: any, index: number) => {
@@ -133,7 +142,7 @@ const ProjectPage: React.FC = () => {
                                         return (
                                             <div key={index} className="input-box">
                                                 <label htmlFor="">{control.attributes?.Label}</label>
-                                                <textarea name={control.attributes?.Name} placeholder={control.attributes?.Placeholder} />
+                                                <textarea onFocus={removeError} name={control.attributes?.Name} placeholder={control.attributes?.Placeholder} required />
                                             </div>
                                         )
                                     } else {
@@ -152,7 +161,7 @@ const ProjectPage: React.FC = () => {
                             <div className="g-recaptcha g-recaptcha-custom" data-sitekey="6Letg30gAAAAAL-BOKYZNel1i17QhLWfkIlYnPL0"></div>
                             <div className="button-box">
                                 <button id="submit" type="button" className="button button-default" onClick={test}>
-                                {translations?.apply}
+                                    {translations?.apply}
                                 </button>
                             </div>
                         </form>
