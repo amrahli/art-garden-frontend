@@ -51,11 +51,11 @@ const Projects: React.FC = () => {
                     <div className="row">
                         <div></div>
                         {projects.map((project: any, i: number) => (
-                            <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" key={i}>
+                            <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" key={i}>
                                 <Project
                                     name={project.attributes.Title}
                                     slug={project.attributes.Slug}
-                                    image={project.attributes?.Image !== undefined? project.attributes?.Image?.data[0]?.attributes?.url: 'https://res.cloudinary.com/drxsywfuh/image/upload/v1655655238/medium_default_placeholder_3ee627c596.png'}
+                                    image={project.attributes?.CardImage !== undefined? project.attributes?.CardImage?.data[0]?.attributes?.url: 'https://res.cloudinary.com/drxsywfuh/image/upload/v1655655238/medium_default_placeholder_3ee627c596.png'}
                                     description={project.attributes.Description}
                                 />
                             </div>

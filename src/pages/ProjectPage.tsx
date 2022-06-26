@@ -111,8 +111,8 @@ const ProjectPage: React.FC = () => {
             alert("Doldurulmamış xanalar mövcuddur")
         }
     }
-    const bannerImageSrc = project?.attributes?.Image
-        ? project?.attributes?.Image?.data[0]?.attributes?.url
+    const bannerImageSrc = project?.attributes?.CoverImage
+        ? project?.attributes?.CoverImage?.data?.attributes?.url
         : 'https://res.cloudinary.com/drxsywfuh/image/upload/v1655655238/medium_default_placeholder_3ee627c596.png'
     return (
         <>

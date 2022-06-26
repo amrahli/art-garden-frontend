@@ -57,7 +57,7 @@ const ProjectsPage: React.FC = () => {
                         <Project
                             name={project.attributes.Title}
                             slug={project.attributes.Slug}
-                            image={project.attributes.Image.data[0].attributes.url}
+                            image={project.attributes.CardImage.data[0].attributes.url}
                             description={project.attributes.Description}
                         />
                     </div>
