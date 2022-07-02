@@ -55,18 +55,23 @@ const ProjectPage: React.FC = () => {
 
     const validateForm = () => {
         const inputElements = document.forms[0].elements
-        console.log(inputElements.length)
+        const inputElementCount = document.querySelectorAll("form .validate").length
+        console.log(inputElementCount)
 
         for (let i = 0; i < inputElements.length; i++) {
-            console.log((inputElements[i] as HTMLFormElement).value)
-            console.log((inputElements[i] as HTMLFormElement).name)
-            if ((inputElements[i] as HTMLFormElement).value === '') {
-                (inputElements[i] as HTMLFormElement).classList.add('error')
-            }else{
-                (inputElements[i] as HTMLFormElement).classList.remove('error')
+
+            if(inputElements[i].classList.contains("validate")){
+                console.log((inputElements[i] as HTMLFormElement).value)
+                console.log((inputElements[i] as HTMLFormElement).name)
+                if ((inputElements[i] as HTMLFormElement).value === '') {
+                    (inputElements[i] as HTMLFormElement).classList.add('error')
+                    return false;
+                }else{
+                    (inputElements[i] as HTMLFormElement).classList.remove('error')
+                }
             }
         }
-        return false
+        return true;
     }
 
     const removeError = () => {
@@ -134,7 +139,7 @@ const ProjectPage: React.FC = () => {
                     <div className="article-form">
                         <h2 className="form-header">{translations?.applicationForm}</h2>
                         <form action="">
-                            <input type="hidden" name="" value={project?.attributes?.Title} />
+                            <input type="hidden" name="Project" value={project?.attributes?.Title} />
                             {project?.attributes?.form_fields?.data
                                 ?.sort((a: any, b: any) => a.attributes?.Order - b.attributes?.Order)
                                 .map((control: any, index: number) => {
@@ -142,7 +147,7 @@ const ProjectPage: React.FC = () => {
                                         return (
                                             <div key={index} className="input-box">
                                                 <label htmlFor="">{control.attributes?.Label}</label>
-                                                <textarea onFocus={removeError} name={control.attributes?.Name} placeholder={control.attributes?.Placeholder} required />
+                                                <textarea className="validate" onFocus={removeError} name={control.attributes?.Name} placeholder={control.attributes?.Placeholder} required />
                                             </div>
                                         )
                                     } else {
@@ -150,6 +155,7 @@ const ProjectPage: React.FC = () => {
                                             <div key={index} className="input-box">
                                                 <label htmlFor="">{control.attributes?.Label}</label>
                                                 <input
+                                                    className="validate"
                                                     name={control.attributes?.Name}
                                                     type={control.attributes?.Type}
                                                     placeholder={control.attributes?.Placeholder}
