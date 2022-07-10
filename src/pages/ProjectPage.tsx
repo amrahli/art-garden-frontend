@@ -87,14 +87,16 @@ const ProjectPage: React.FC = () => {
     const test = () => {
         if (validateForm()) {
             project?.attributes?.form_fields?.data?.forEach((control: any, index: number) => {
-                console.log(control.attributes.Name)
+            if(!["Phone","FullName","Email"].includes(control.attributes.Name)){
                 let value = ''
+
                 if (control.attributes.Type === 'textarea') {
                     value = (document.getElementsByName(control.attributes.Name)[0] as HTMLTextAreaElement).value
                 } else {
                     value = (document.getElementsByName(control.attributes.Name)[0] as HTMLInputElement).value
                 }
-                z += control.attributes?.Label + ' == ' + value + '@@'
+                z += '@@'+control.attributes?.Label + ' == ' + value
+            }
             })
             setStringToSend(z)
 
@@ -103,8 +105,8 @@ const ProjectPage: React.FC = () => {
                     data: {
                         Extras: z,
                         FullName: (document.getElementsByName("FullName")[0] as HTMLInputElement).value,
-                        Email: (document.getElementsByName("Email")[0] as HTMLInputElement).value
-                        //Project: (document.getElementsByName("Project")[0] as HTMLInputElement).value,
+                        Email: (document.getElementsByName("Email")[0] as HTMLInputElement).value,
+                        Phone: (document.getElementsByName("Phone")[0] as HTMLInputElement).value
                     }
                 })
                 .then((response) => {
