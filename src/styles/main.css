@@ -417,9 +417,9 @@ section.services .service .service-item {
 
 section.services .service .service-item img {
   position: relative;
-  height: 50px;
-  -webkit-filter: greyscale(1);
-          filter: greyscale(1);
+  height: 67px;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
 }
 
 section.services .service .service-item span {

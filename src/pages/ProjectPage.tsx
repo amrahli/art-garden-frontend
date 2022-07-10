@@ -63,7 +63,7 @@ const ProjectPage: React.FC = () => {
             if(inputElements[i].classList.contains("validate")){
                 console.log((inputElements[i] as HTMLFormElement).value)
                 console.log((inputElements[i] as HTMLFormElement).name)
-                if ((inputElements[i] as HTMLFormElement).value === '') {
+                if ((inputElements[i] as HTMLFormElement).value.trim() === '') {
                     (inputElements[i] as HTMLFormElement).classList.add('error')
                     return false;
                 }else{
@@ -94,24 +94,28 @@ const ProjectPage: React.FC = () => {
                 } else {
                     value = (document.getElementsByName(control.attributes.Name)[0] as HTMLInputElement).value
                 }
-                z += control.attributes?.Label + ': ' + value + '\n'
+                z += control.attributes?.Label + ': ' + value + '@@'
             })
             setStringToSend(z)
 
             axios
                 .post(`${baseUrl}/api/applicants`, {
                     data: {
-                        Extras: z
+                        Extras: z,
+                        FullName: (document.getElementsByName("FullName")[0] as HTMLInputElement).value,
+                        Email: (document.getElementsByName("Email")[0] as HTMLInputElement).value
+                        //Project: (document.getElementsByName("Project")[0] as HTMLInputElement).value,
                     }
                 })
                 .then((response) => {
                     if (response.statusText == 'OK') {
-                        alert('Müraciətiniz qəbul edildi!')
-                        ;(document.querySelector('.project form') as HTMLFormElement).reset()
-                    } else {
+                        alert('Müraciətiniz qəbul edildi!');
+                        (document.querySelector('.project form') as HTMLFormElement).reset()
+
+                    }else{
                         alert('Bir az sonra yenidən cəhd edin')
                     }
-                })
+                }).catch((error)=>{alert("Xəta baş verdi! Məlumatların doğruluğunu yoxlayıb yenidən cəhd edin!")})
         }else{
             alert("Doldurulmamış xanalar mövcuddur")
         }
