@@ -94,7 +94,7 @@ const ProjectPage: React.FC = () => {
                 } else {
                     value = (document.getElementsByName(control.attributes.Name)[0] as HTMLInputElement).value
                 }
-                z += control.attributes?.Label + ': ' + value + '@@'
+                z += control.attributes?.Label + ' == ' + value + '@@'
             })
             setStringToSend(z)
 
